@@ -59,7 +59,7 @@ class Manager(DataBase):
             else:
                 params = [lookup]
 
-            sql_get_data = "select * from gene_autocomplete where display_label like %s {extra_search} limit 10"
+            sql_get_data = "select * from gene_autocomplete where display_label like %s {extra_search}"
             sql_get_data = sql_get_data.replace('{extra_search}',extra_search)
             result = self.execute_statement(sql_get_data, parameters=params)
             return result
