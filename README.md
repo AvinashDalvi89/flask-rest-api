@@ -66,6 +66,11 @@ Response body:
 * open terminal and go to project run
 * run command
     python run.py
+* This API has been testing using curl and postman code will not depend on any external library. Required library is already added in project folder. This can work in any environment.Can make database configuration based on enviroment by adding db.config. Keeping db-local.config, db-stage.config and db-prod.config. In each enviroment creating symbolic link to db.config to respective configuration file. 
+
+        ln -s db.config db-local.config -- local 
+        ln -s db.config db-stage.config -- stage
+        ln -s db.config db-prod.config -- production
 
 ## Postman Request 
 
