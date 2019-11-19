@@ -63,6 +63,9 @@ Response body:
 
 
 ## Application run guidelines :
+* Install flask pytho https://pypi.org/project/Flask/
+
+         pip install Flask
 * open terminal and go to project run
 * run command
     python run.py
