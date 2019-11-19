@@ -20,6 +20,9 @@ def index():
 def get_genes():
     lookup = request.args.get('lookup', None)
     species = request.args.get('species', None)
+    if lookup is None:
+        return make_response(jsonify({'error': 'lookup parameter is required to fetch details', 'status': 400}),
+                             400)
     if len(lookup) < 3 :
         return make_response(jsonify({'error': 'Search string length should be more than 3 characters','status': 400}), 400)
     else:
@@ -39,12 +42,22 @@ class Manager(DataBase):
 
     def __init__(self):
         self.connection_details = {
-            'host': 'ensembldb.ensembl.org',
-            'database': 'ensembl_website_97',
-            'user': 'anonymous',
-            'password': ''
+
         }
+        self.read_db_config('db.config')
+        print self.connection_details
         DataBase.__init__(self)
+
+    def read_db_config(self, file_name):
+        try:
+            f = open(file_name, "r")
+            for line in f:
+                if line and not line.strip().startswith("#"):
+                    key, value = line.split("=")
+                    self.connection_details[key.strip()] = value.strip()
+            f.close()
+        except Exception, msg:
+            print "Exception in readMasterConfig", msg, file_name
 
     def get_details(self, lookup, species):
 

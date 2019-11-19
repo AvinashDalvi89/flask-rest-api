@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+"""
+    File 	        : database.py
+    Package         :
+    Description     : This is use for connecting mysql database and running sql query.
+    Project Name    : FLASK REST API
+    Created by Avinash on 18/11/2019
+"""
+
 import mysql.connector
 import time
 from utility import *
@@ -6,7 +15,7 @@ import traceback
 
 class DataBase(Utility):
     """
-    Class which HollogMsgds DataBase Implementations
+    Class which Hold Database connectivity and executing query
     """
     module_name = "DataBase"
 
@@ -17,12 +26,11 @@ class DataBase(Utility):
 
     def create_connection_obj(self):
         try:
-            # print "akhgakhfg"
             self.connection_obj = mysql.connector.connect(**self.connection_details)
             self.connection_obj.autocommit = True
             print "connected to db", self.connection_obj
         except Exception, ex:
-            print "DB Connection Exception while creating connection", ex
+            print "DBCONNECTION Exception while creating connection", ex
             self.connection_obj = None
         except:
             print "Unknown Error in MySQL connection creation" * 10
