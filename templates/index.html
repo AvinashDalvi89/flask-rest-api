@@ -1,0 +1,30 @@
+
+  <p>total: {{total}}</p>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Note</th>
+        <th scope="col" id="th1">Credit</th>
+        <th scope="col" id="th2">Debit</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in notes %}
+    <tr>
+        <td>{{i[0]}}</td>
+        <td>{{i[1]}}</td>
+        {% if i[3] == 1 %}
+            <td headers="th1">{{i[2]}}</td>
+            <td headers="th2"></td>
+        {% elif i[3] == 2 %}
+            <td headers="th1"></td>
+            <td headers="th2">{{i[2]}}</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>

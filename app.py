@@ -7,13 +7,26 @@
     Created by Avinash on 18/11/2019
 """
 
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify, make_response,render_template
 import pymysql
 from database import *
 app = Flask(__name__)
 
+
+@app.route("/")
 def index():
-    return "Hello Nuclear Geeks"
+    notes = [
+     ['2019-12-21','Bundle Coli',0, -500.25],['2019-12-21','Gopalan Coli',10000, -1289.25],['2019-12-23','Bundle Coli',0, -500.25]
+    ]
+    total = sum(notes)
+    return render_template("index.html", total = total, notes = notes)
+
+def sum(note):
+    total = 0
+    for i in note:
+        total += i[2]
+
+    return total
 
 @app.route('/api/v1.0/genes', methods=['GET'])
 
