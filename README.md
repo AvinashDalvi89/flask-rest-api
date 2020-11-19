@@ -1,5 +1,7 @@
 # flask-rest-api
 This is REST API developed using python flask framework. To get data from database using GET method. 
+![Python Flask](https://user-images.githubusercontent.com/3996105/99665224-56ce9080-2a8f-11eb-840e-360f93082600.png)
+
 
 ## General guidelines for API 
 
